@@ -1,0 +1,39 @@
+We will run a loop(say i) to iterate the given array.
+Now, while iterating we will add the elements to the sum variable and consider the maximum one.
+If at any point the sum becomes negative we will set the sum to 0 as we are not going to consider it as a part of our answer.
+
+CODE - 
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        
+        // int max_sum=INT_MIN;
+        // int i=0;
+        // int sum=0;
+        
+        // while(i<nums.size()){
+        //      sum = sum+nums[i];
+            
+        //     if(sum<nums[i]){
+        //         sum=nums[i];
+        //     }
+            
+        //     if(max_sum<sum){
+        //     max_sum=sum;
+        //     }
+            
+        //    i++;
+
+        // }
+        // return max_sum;
+
+        //KADANE's Algorithm
+        int sum=0,max_sum = INT_MIN;
+        for(auto i: nums){
+            sum = sum+i;
+            if(max_sum<sum) max_sum = sum;
+            if(sum<0) sum = 0;
+        }
+        return max_sum;
+    }
+};
